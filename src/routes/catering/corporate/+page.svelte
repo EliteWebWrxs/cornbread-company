@@ -9,6 +9,7 @@
 <Seo
   title="Corporate Catering Denver | Cornbread & Company"
   description="A good lunch gives everyone a reason to step away from their desk. Southern food for Denver teams, meetings and company gatherings."
+  image="catering"
 />
 <Hero
   title="Corporate & Office Catering"

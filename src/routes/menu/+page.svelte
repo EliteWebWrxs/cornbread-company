@@ -9,6 +9,7 @@
 <Seo
   title="Menu — Soul Food, BBQ & Homemade Sides | Cornbread & Co"
   description="Southern favorites, barbecue, comforting sides and something sweet to finish. Confirm menu availability and pricing when planning your order."
+  image="menu"
 />
 <Hero
   title="Our Menu"

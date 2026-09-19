@@ -11,6 +11,7 @@
 <Seo
   title="Private Event Catering Denver | Cornbread & Company"
   description="For birthdays, reunions, church meals and the moments that bring your people close."
+  image="catering"
 />
 <Hero
   title="Catering for Life’s Gatherings"

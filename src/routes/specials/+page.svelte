@@ -9,6 +9,7 @@
 <Seo
   title="Weekly Specials — Oxtails, Brisket & Prime Rib"
   description="Premium meats and desserts rotate. Here’s what to look forward to when the kitchen announces its next selection."
+  image="menu"
 />
 <Hero
   title="Something Special at the Table"

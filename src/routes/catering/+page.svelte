@@ -13,6 +13,7 @@
 <Seo
   title="Soul Food Catering Denver | Cornbread & Company"
   description="Southern food for the people you bring together. Let’s plan a menu for your office, church or family gathering."
+  image="catering"
 />
 <Hero
   title="Soul Food & BBQ Catering in Denver"

@@ -26,7 +26,9 @@
   <div class="page-gutter flex max-w-7xl flex-wrap items-center justify-between gap-6 py-6">
     <a href="/" aria-label="Cornbread and Company home" class="flex items-center gap-4">
       <Logo class="size-12 shrink-0 sm:size-14" sizes="56px" />
-      <span class="font-display text-gold text-3xl leading-[0.85] tracking-tight"
+      <!-- The badge already carries the wordmark, so on phones the mark stands
+           alone. The link keeps its aria-label, so the name is still announced. -->
+      <span class="font-display text-gold hidden text-3xl leading-[0.85] tracking-tight sm:block"
         >Cornbread<span class="mt-2 block text-center text-xl tracking-normal italic"
           >& Company</span
         ></span
@@ -55,7 +57,7 @@
       {#each links as [href, label]}<a
           {href}
           aria-current={page.url.pathname === href ? 'page' : undefined}
-          class="hover:text-gold aria-[current=page]:border-gold aria-[current=page]:text-gold border-b border-transparent py-3 text-xs transition"
+          class="hover:text-gold aria-[current=page]:border-gold aria-[current=page]:text-gold flex min-h-11 items-center border-b border-transparent py-3 text-xs transition lg:block lg:min-h-0"
           onclick={() => (open = false)}>{label}</a
         >{/each}
       <a
