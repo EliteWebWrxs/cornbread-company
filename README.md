@@ -1,30 +1,48 @@
-# SvelteKit
+# Cornbread Company
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte), deployed to [Vercel](https://vercel.com).
+A [SvelteKit](https://svelte.dev/docs/kit) app styled with [Tailwind CSS](https://tailwindcss.com).
 
-## Deploy Your Own
+## Stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvercel%2Ftree%2Fmain%2Fexamples%2Fsveltekit&project-name=sveltekit-vercel&repository-name=sveltekit-vercel&demo-title=SvelteKit%20%2B%20Vercel&demo-description=A%20SvelteKit%20app%20optimized%20Edge-first.&demo-url=https%3A%2F%2Fsveltekit-template.vercel.app%2F)
-
-_Live Example: https://sveltekit-template.vercel.app_
+| Package      | Version |
+| ------------ | ------- |
+| Svelte       | 5       |
+| SvelteKit    | 2       |
+| Vite         | 8       |
+| Tailwind CSS | 4       |
 
 ## Developing
 
-Once you've installed dependencies with `pnpm install`, start a development server:
+Install dependencies with `pnpm install`, then start a development server:
 
 ```bash
 pnpm run dev
 
 # or start the server and open the app in a new browser tab
-pnpm run dev -- --open
+pnpm run dev --open
 ```
 
 ## Building
-
-To create a production version of your app:
 
 ```bash
 pnpm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build with `pnpm run preview`.
+
+`@sveltejs/adapter-auto` picks the right adapter for the deploy target. For a fixed
+target, install the matching adapter and set it in `svelte.config.js`.
+
+## Other commands
+
+```bash
+pnpm run check    # type-check with svelte-check
+pnpm run format   # format with Prettier
+pnpm run lint     # verify formatting
+```
+
+## Styling
+
+Tailwind is wired in through `@tailwindcss/vite` (no `tailwind.config.js` — v4 is
+configured in CSS). The palette, fonts, and base styles live in
+[`src/app.css`](src/app.css) under `@theme`.

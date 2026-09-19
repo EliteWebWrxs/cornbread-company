@@ -1,107 +1,189 @@
-@import '@fontsource/fira-mono';
+@import 'tailwindcss';
 
-:root {
-  font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --font-mono: 'Fira Mono', monospace;
-  --pure-white: #ffffff;
-  --primary-color: #b9c6d2;
-  --secondary-color: #d0dde9;
-  --tertiary-color: #edf0f8;
-  --accent-color: #ff3e00;
-  --heading-color: rgba(0, 0, 0, 0.7);
-  --text-color: #444444;
-  --background-without-opacity: rgba(255, 255, 255, 0.7);
-  --column-width: 42rem;
-  --column-margin-top: 4rem;
+/* ============================================================================
+   Cornbread & Company — brand palette
+
+   Black and gold are the brand. Espresso is the third color that makes them
+   work: gold CANNOT carry text on a light surface (1.97:1) and CANNOT pair
+   with white (2.10:1), so something else has to do that job.
+
+   Every ratio in these comments is measured, not estimated.
+   Pairing rules: docs/color-system.md. Read it before using gold.
+   ============================================================================ */
+
+@theme {
+  /* --- Dark surfaces ------------------------------------------------------ */
+  --color-black: #0f0e0c; /* primary dark surface; also text on light (18.03:1) */
+  --color-espresso: #3e2a1e; /* THIRD COLOR. Body text on light (12.62:1) + 2nd dark surface */
+  --color-espresso-muted: #5c4a38; /* secondary text on light (7.88:1) */
+
+  /* --- Light surfaces ----------------------------------------------------- */
+  --color-cream: #faf7f0; /* primary light surface — warmer than white, less glare */
+  --color-cream-shade: #f0eae0; /* inset panels + DECORATIVE rules only (1.12:1) */
+  --color-rule: #8f7d63; /* functional borders on cream (3.72:1 — meets 1.4.11) */
+  --color-rule-dark: #6b5f4e; /* functional borders on black (3.10:1) */
+
+  /* --- Gold: accent only. Never body text on a light surface. ------------- */
+  --color-gold: #d4af37; /* on DARK only (9.18:1 on black). On cream it is 1.97:1 */
+  --color-gold-light: #e8c55a; /* hover on dark (11.54:1) */
+  --color-bronze: #6b4e0f; /* gold-FLAVORED text on light (7.21:1) + light-surface focus ring */
+
+  /* --- Semantic ----------------------------------------------------------- */
+  --color-danger: #a4221b; /* 6.95:1 on cream */
+  --color-success: #2f5d3a; /* 7.14:1 on cream */
+
+  --font-display: ui-serif, Georgia, Cambria, 'Times New Roman', serif;
 }
 
-body {
-  min-height: 100vh;
-  margin: 0;
-  background-color: var(--primary-color);
-  background: linear-gradient(
-    180deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 10.45%,
-    var(--tertiary-color) 41.35%
-  );
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-cream text-espresso font-sans antialiased;
+  }
+  main {
+    @apply flex-1;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-normal;
+    text-wrap: balance;
+  }
+  h2 {
+    /* Fluid rather than a 36->48px jump at exactly 768px. Anchored so the
+       endpoints are unchanged: 36px at 390px wide, 48px from 1280px up.
+       Matches the h1 in Hero.svelte, which already scales with clamp(). */
+    @apply mb-6 text-[clamp(2.25rem,1.921rem+1.348vw,3rem)] leading-[1.12] tracking-[-0.035em];
+  }
+  h3 {
+    @apply mb-4 text-2xl leading-tight tracking-tight;
+  }
+  p {
+    @apply mb-5 leading-relaxed;
+  }
+  a {
+    text-underline-offset: 5px;
+  }
+  p a {
+    @apply decoration-rule underline;
+  }
+  button,
+  summary {
+    @apply cursor-pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-bronze);
+    outline-offset: 5px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-gold);
+  }
+  table {
+    @apply my-6 w-full border-collapse text-left text-sm;
+  }
+  caption {
+    @apply font-display mb-6 text-left text-3xl;
+  }
+  th,
+  td {
+    @apply border-rule/40 border-b px-3 py-5;
+  }
+  th {
+    @apply font-medium;
+  }
+  label {
+    @apply flex flex-col gap-2 text-xs font-medium tracking-wide;
+  }
+  input,
+  select,
+  textarea {
+    @apply border-rule bg-cream text-espresso min-w-0 rounded-sm border px-4 py-3.5 text-base font-normal;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-espresso-muted;
+  }
+  textarea {
+    @apply resize-y;
+  }
+  details {
+    @apply border-rule/40 border-b py-6;
+  }
+  summary {
+    @apply font-display pr-6 text-xl md:text-2xl;
+  }
+  details p {
+    @apply text-espresso-muted mt-5 max-w-2xl;
+  }
+  footer {
+    @apply text-cream bg-black;
+  }
+  footer h2 {
+    @apply text-gold mb-5 font-sans text-xs font-semibold tracking-[0.18em] uppercase;
+  }
+  footer p {
+    @apply mt-6 text-sm leading-7;
+  }
+  footer nav a {
+    @apply hover:text-gold block py-1.5 text-sm transition;
+  }
+}
+@layer components {
+  .text-link {
+    @apply border-bronze text-bronze mt-5 inline-flex items-center gap-3 border-b pb-1 text-sm font-medium transition hover:gap-5;
+  }
+  .on-dark .text-link {
+    @apply border-gold text-gold;
+  }
+  .on-dark [class~='text-bronze'] {
+    @apply text-gold;
+  }
+  .paper-grid {
+    background-image:
+      linear-gradient(#3e2a1e05 1px, transparent 1px),
+      linear-gradient(90deg, #3e2a1e05 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
-body::before {
-  content: '';
-  width: 80vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 10vw;
-  z-index: -1;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    var(--pure-white) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  opacity: 0.05;
+/* Every page band shares one gutter. Repeating the three width values by hand
+   is how they drift apart, so they live here once instead of in 60 templates. */
+@utility page-gutter {
+  margin-inline: auto;
+  width: calc(100% - 2.5rem);
+
+  @media (width >= 40rem) {
+    width: calc(100% - 5rem);
+  }
+
+  @media (width >= 64rem) {
+    width: calc(100% - 8rem);
+  }
 }
 
-#svelte {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+/* Stacked bands (heading above full-width content) centre their heading and the
+   small eyebrow above it; the grid or table below stays left-aligned. Two-column
+   bands are not affected — there the heading sits beside its content instead. */
+@utility centered-head {
+  & > h2 {
+    text-align: center;
+  }
 
-h1,
-h2,
-p {
-  font-weight: 400;
-  color: var(--heading-color);
-}
-
-p {
-  line-height: 1.5;
-}
-
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-h1 {
-  font-size: 2rem;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1rem;
-}
-
-pre {
-  font-size: 16px;
-  font-family: var(--font-mono);
-  background-color: rgba(255, 255, 255, 0.45);
-  border-radius: 3px;
-  box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-  padding: 0.5em;
-  overflow-x: auto;
-  color: var(--text-color);
-}
-
-input,
-button {
-  font-size: inherit;
-  font-family: inherit;
-}
-
-button:focus:not(:focus-visible) {
-  outline: none;
-}
-
-@media (min-width: 720px) {
-  h1 {
-    font-size: 2.4rem;
+  & > p:has(+ h2) {
+    text-align: center;
   }
 }
