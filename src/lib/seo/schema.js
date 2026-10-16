@@ -7,7 +7,12 @@ export function schema(path, title) {
   const url = (/** @type {string} */ p) => (site.origin ? new URL(p, site.origin).href : p);
   const business = {
     '@type': 'FoodEstablishment',
+    // Stable @id so every page refers to the same entity rather than declaring
+    // a new business each time.
+    ...(site.origin ? { '@id': `${site.origin}/#business`, url: site.origin } : {}),
     name: site.name,
+    logo: url('/icon-512.png'),
+    image: url('/og/default.jpg'),
     alternateName: site.alternateName,
     slogan: site.tagline,
     servesCuisine: ['Soul Food', 'Southern', 'Barbecue'],

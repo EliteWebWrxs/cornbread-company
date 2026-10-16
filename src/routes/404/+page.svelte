@@ -1,9 +1,6 @@
 <script>
-  import Seo from '$lib/components/Seo.svelte';
   import Hero from '$lib/components/Hero.svelte';
 </script>
-
-<Seo title="Page not found | Cornbread &amp; Company" description="That page could not be found." />
 
 <svelte:head
   ><title>Page not found | Cornbread & Company</title><meta

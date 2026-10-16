@@ -2,7 +2,9 @@
 export const site = {
   name: 'Cornbread & Company',
   alternateName: 'Cornbread and Company',
-  origin: '',
+  // Canonical host. Must match the domain that actually serves the site, and
+  // the other variant (apex vs www) must 301 here — see docs/seo-launch.md.
+  origin: 'https://www.cornbreadandcompany.com',
   // Primary line, E.164 for tel: links and schema.
   phone: '+17202979861',
   phones: [
@@ -15,7 +17,7 @@ export const site = {
   hours: [
     ['Sunday–Thursday', '11 AM–8 PM'],
     ['Friday', '11 AM–5 PM'],
-    ['Saturday', 'Closed for Sabbath']
+    ['Saturday', 'Closed']
   ],
   areas: {
     Denver: 'Denver, Five Points, Park Hill, Montbello, Green Valley Ranch, Central Park, RiNo',
