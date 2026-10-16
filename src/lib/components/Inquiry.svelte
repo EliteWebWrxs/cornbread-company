@@ -18,7 +18,7 @@
     const date = String(data.get('date') || '');
     if (date && new Date(date + 'T12:00:00').getDay() === 6) {
       failed = true;
-      status = "We're closed Saturdays for Sabbath. Please choose another event date.";
+      status = "We're closed Saturdays. Please choose another event date.";
       return;
     }
 

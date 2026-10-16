@@ -17,6 +17,6 @@
     >
   </table>
   <p class="text-xs leading-relaxed">
-    We're closed Saturdays for Sabbath. Our restaurant location is to be announced.
+    We're closed Saturdays. Our restaurant location is to be announced.
   </p>
 </div>

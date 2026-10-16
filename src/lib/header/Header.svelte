@@ -19,7 +19,7 @@
   class="on-dark bg-espresso text-cream flex justify-center px-5 py-2 text-xs tracking-[0.15em] sm:justify-between sm:px-10 lg:px-16"
 >
   <span>SOUL FOOD & BBQ · DENVER, COLORADO</span><span class="hidden sm:block"
-    >SUNDAY–FRIDAY · CLOSED SATURDAYS FOR SABBATH</span
+    >SUNDAY–FRIDAY · CLOSED SATURDAYS</span
   >
 </div>
 <header class="on-dark border-rule-dark/60 text-cream relative z-30 border-b bg-black">

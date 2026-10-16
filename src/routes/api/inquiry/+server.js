@@ -99,7 +99,7 @@ export async function POST({ request, getClientAddress }) {
   // Mirrors the client-side check so it cannot simply be bypassed.
   if (date && new Date(`${date}T12:00:00`).getDay() === 6) {
     return json(
-      { error: "We're closed Saturdays for Sabbath. Please choose another event date." },
+      { error: "We're closed Saturdays. Please choose another event date." },
       { status: 400 }
     );
   }

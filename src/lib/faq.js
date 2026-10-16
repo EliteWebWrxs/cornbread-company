@@ -32,7 +32,7 @@ export const faqs = [
   {
     question: 'Are you open Saturdays?',
     answer:
-      'We are closed Saturdays for Sabbath. Kitchen and order hours are Sunday\u2013Thursday 11 AM\u20138 PM and Friday 11 AM\u20135 PM.'
+      'We are closed Saturdays. Kitchen and order hours are Sunday\u2013Thursday 11 AM\u20138 PM and Friday 11 AM\u20135 PM.'
   },
   {
     question: 'Can you cater a Saturday wedding or party?',

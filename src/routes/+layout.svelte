@@ -41,7 +41,7 @@
     </nav>
     <div>
       <h2>Denver metro</h2>
-      <p>Sun–Thu · 11 AM–8 PM<br />Friday · 11 AM–5 PM<br />Saturday · Closed for Sabbath</p>
+      <p>Sun–Thu · 11 AM–8 PM<br />Friday · 11 AM–5 PM<br />Saturday · Closed</p>
       <div class="mt-6 flex flex-col items-start gap-2 text-sm">
         {#each site.phones as line}<a class="hover:text-gold transition" href={'tel:' + line.tel}
             >{line.display}</a
